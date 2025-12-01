@@ -1,12 +1,8 @@
-import './app.css'
-import {Body} from "./layout";
+import "./app.css";
+import { Body } from "./layout";
 
-function App() {
-  return (
-    <Body>
-        Hello World!
-    </Body>
-  )
-}
+const App = () => {
+	return <Body>Hello World!</Body>;
+};
 
-export default App
+export default App;
