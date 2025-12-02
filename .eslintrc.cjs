@@ -22,7 +22,9 @@ module.exports = {
         'react/require-default-props': 'off',
         '@typescript-eslint/lines-between-class-members': 'off',
         '@typescript-eslint/no-throw-literal': 'off',
+        'import/no-extraneous-dependencies': 'off',
         'react/react-in-jsx-scope': 'off',
+        'react/jsx-curly-brace-presence': 'off',
         'react/function-component-definition': [
             'error',
             {

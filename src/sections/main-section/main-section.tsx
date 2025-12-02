@@ -1,12 +1,18 @@
-import "./main-section.module.css";
+import { TitleText } from "../../components/view";
+import { MainSectionContainer } from "./components/main-section-container";
 
 export const MainSection = () => {
 	return (
-		<div>
-			<div>
-				<span className="section-headers-text italic-letters">В</span>
-				<span className="section-headers-text italic-letters">алерий</span>
-			</div>
-		</div>
+		<MainSectionContainer direction="column">
+			<TitleText>Валера</TitleText>
+			<TitleText
+				style={{
+					alignSelf: "flex-end",
+				}}
+				firstLettersItalicAmount={3}
+			>
+				& Мира
+			</TitleText>
+		</MainSectionContainer>
 	);
 };
