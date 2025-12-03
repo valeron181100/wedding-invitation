@@ -1,6 +1,6 @@
-import React from "react";
+import React, { type CSSProperties } from "react";
 import styled from "@emotion/styled";
-import { convertFlexGapToPixels } from "./convert-flex-gap-to-pixels";
+import { convertSizeToPixels, type Size } from "../../lib";
 
 export type FlexAlignmentOptions =
 	| "flex-start"
@@ -10,24 +10,13 @@ export type FlexAlignmentOptions =
 	| "space-evenly"
 	| "center";
 
-export type FlexGap =
-	| "s0"
-	| "s1"
-	| "s2"
-	| "s3"
-	| "s4"
-	| "s5"
-	| "s6"
-	| "s7"
-	| "s8"
-	| "s9";
-
 export interface FlexProps {
 	children?: React.ReactNode | React.ReactNode[];
 	direction?: "row" | "column";
 	justifyContent?: FlexAlignmentOptions;
 	alignItems?: FlexAlignmentOptions;
-	gap?: FlexGap;
+	flexWrap?: CSSProperties["flexWrap"];
+	gap?: Size;
 	width?: string;
 }
 
@@ -36,6 +25,7 @@ export const Flex = styled.div<FlexProps>`
 	justify-content: ${(props) => props.justifyContent ?? "flex-start"};
 	align-items: ${(props) => props.alignItems ?? "flex-start"};
 	flex-direction: ${(props) => props.direction ?? "row"};
-	gap: ${(props) => (props.gap ? convertFlexGapToPixels(props.gap) : 0)};
+	flex-wrap: ${(props) => props.flexWrap};
+	gap: ${(props) => (props.gap ? `${convertSizeToPixels(props.gap)}px` : 0)};
 	${(props) => (props.width ? `width: ${props.width};` : "")}
 `;

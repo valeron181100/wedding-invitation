@@ -23,3 +23,30 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'good-vibes-cyr';
+    src: url("/public/assets/fonts/good-vibes-cyr.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'old-standard-tt';
+    src: url("/public/assets/fonts/old-standard-tt-regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'old-standard-tt';
+    src: url("/public/assets/fonts/old-standard-tt-italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'old-standard-tt';
+    src: url("/public/assets/fonts/old-standard-tt-bold.ttf") format("truetype");
+    font-weight: bold;
+}

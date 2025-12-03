@@ -1,18 +1,16 @@
-import { TitleText } from "../../components/view";
+import { Flex, TitleText } from "../../components/view";
 import { MainSectionContainer } from "./components/main-section-container";
+import { NamesTitle } from "./components/names-title";
 
 export const MainSection = () => {
 	return (
-		<MainSectionContainer direction="column">
-			<TitleText>Валера</TitleText>
-			<TitleText
-				style={{
-					alignSelf: "flex-end",
-				}}
-				firstLettersItalicAmount={3}
-			>
-				& Мира
-			</TitleText>
+		<MainSectionContainer direction="column" justifyContent={"space-between"}>
+			<NamesTitle />
+			<Flex justifyContent={"flex-start"} alignItems={"center"}>
+				<TitleText fontSize={"s13"} fullCursive style={{ marginLeft: 8 }}>
+					Wedding Day
+				</TitleText>
+			</Flex>
 		</MainSectionContainer>
 	);
 };

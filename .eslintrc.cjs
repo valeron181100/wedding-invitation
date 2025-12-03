@@ -25,6 +25,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-curly-brace-presence': 'off',
+        '@typescript-eslint/no-empty-object-type': 'off',
         'react/function-component-definition': [
             'error',
             {

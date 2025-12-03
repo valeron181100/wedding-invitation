@@ -1,21 +1,30 @@
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import React from "react";
+import { convertSizeToPixels, type Size } from "../lib";
 
 interface TitleTextProps {
 	firstLettersItalicAmount?: number;
+	nowrap?: boolean;
+	fullCursive?: boolean;
 	style?: React.CSSProperties;
+	fontSize?: Size;
 	children?: string;
 }
 
-const TitleTextContainer = styled.span`
-	font-size: ${({ theme }) => theme.typography.fontSize.title};
+const TitleTextContainer = styled.span<{ nowrap?: boolean; fontSize?: string }>`
+	font-size: ${({ theme, fontSize }) =>
+		fontSize || theme.typography.fontSize.title};
 	color: ${({ theme }) => theme.colors.text.titleWarm};
+	white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "wrap")};
 `;
 
 export const TitleText = ({
-	firstLettersItalicAmount = 1,
+	firstLettersItalicAmount = 0,
 	children,
+	nowrap = false,
+	fullCursive = false,
+	fontSize,
 	style,
 }: TitleTextProps) => {
 	const theme = useTheme();
@@ -23,7 +32,11 @@ export const TitleText = ({
 	const contentBaseline = children?.slice(firstLettersItalicAmount);
 
 	return (
-		<TitleTextContainer style={style}>
+		<TitleTextContainer
+			style={style}
+			nowrap={nowrap}
+			fontSize={fontSize ? `${convertSizeToPixels(fontSize)}px` : undefined}
+		>
 			<span
 				style={{
 					fontFamily: theme.typography.fontFamily.cursive,
@@ -33,7 +46,9 @@ export const TitleText = ({
 			</span>
 			<span
 				style={{
-					fontFamily: theme.typography.fontFamily.base,
+					fontFamily: fullCursive
+						? theme.typography.fontFamily.cursive
+						: theme.typography.fontFamily.base,
 				}}
 			>
 				{contentBaseline}

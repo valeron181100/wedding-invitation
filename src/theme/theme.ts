@@ -13,12 +13,12 @@ export const theme = {
 	typography: {
 		fontSize: {
 			base: "8em",
-			title: "6em",
+			title: "4em",
 		},
 		fontFamily: {
-			base: '"Times New Roman", serif',
+			base: "old-standard-tt",
 			monospace: "courier, courier",
-			cursive: "pompadur",
+			cursive: "good-vibes-cyr",
 		},
 	},
 };
