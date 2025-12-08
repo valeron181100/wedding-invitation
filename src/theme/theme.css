@@ -8,6 +8,8 @@ body {
 #root {
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 @font-face {
@@ -48,5 +50,35 @@ body {
 @font-face {
     font-family: 'old-standard-tt';
     src: url("/public/assets/fonts/old-standard-tt-bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'als-finlandia-script';
+    src: url("/public/assets/fonts/als-finlandia-script.otf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'als-finlandia-script';
+    src: url("/public/assets/fonts/als-finlandia-script-bold.otf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'tagesschrift';
+    src: url("/public/assets/fonts/tagesschrift.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'bully-g';
+    src: url("/public/assets/fonts/bully-g-regular.otf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'bully-g';
+    src: url("/public/assets/fonts/bully-g-bold.otf") format("truetype");
     font-weight: bold;
 }

@@ -17,7 +17,9 @@ export interface FlexProps {
 	alignItems?: FlexAlignmentOptions;
 	flexWrap?: CSSProperties["flexWrap"];
 	gap?: Size;
+	p?: Size;
 	width?: string;
+	height?: string;
 }
 
 export const Flex = styled.div<FlexProps>`
@@ -27,5 +29,17 @@ export const Flex = styled.div<FlexProps>`
 	flex-direction: ${(props) => props.direction ?? "row"};
 	flex-wrap: ${(props) => props.flexWrap};
 	gap: ${(props) => (props.gap ? `${convertSizeToPixels(props.gap)}px` : 0)};
-	${(props) => (props.width ? `width: ${props.width};` : "")}
+	padding: ${(props) => (props.p ? `${convertSizeToPixels(props.p)}px` : 0)};
+	width: ${(props) => {
+		const width = props.width ?? "100%";
+		return props.p
+			? `calc(${width} - ${convertSizeToPixels(props.p) * 2}px)`
+			: width;
+	}};
+	height: ${(props) => {
+		const height = props.height ?? "100%";
+		return props.p
+			? `calc(${height} - ${convertSizeToPixels(props.p) * 2}px)`
+			: height;
+	}};
 `;

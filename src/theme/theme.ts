@@ -1,24 +1,24 @@
 export const theme = {
 	colors: {
 		background: {
-			primary: "#67001E",
-			secondary: "#FFEBED",
+			primary: "#5c0607",
+			secondary: "#fff5d4",
 		},
 		text: {
-			primary: "#FFEBED",
-			secondary: "#FFEBED",
-			titleWarm: "#F7D88C",
+			onPrimary: "#F7D88C",
+			onSecondary: "#5c0607",
+			titleWarm: "#FFEBED",
 		},
 	},
 	typography: {
 		fontSize: {
-			base: "8em",
-			title: "4em",
+			base: "1.3em",
+			title: "3.5em",
 		},
 		fontFamily: {
-			base: "old-standard-tt",
+			base: "tagesschrift",
 			monospace: "courier, courier",
-			cursive: "good-vibes-cyr",
+			cursive: "als-finlandia-script",
 		},
 	},
 };

@@ -16,6 +16,7 @@ const TitleTextContainer = styled.span<{ nowrap?: boolean; fontSize?: string }>`
 	font-size: ${({ theme, fontSize }) =>
 		fontSize || theme.typography.fontSize.title};
 	color: ${({ theme }) => theme.colors.text.titleWarm};
+	font-weight: bold;
 	white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "wrap")};
 `;
 

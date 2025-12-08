@@ -26,6 +26,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-curly-brace-presence': 'off',
         '@typescript-eslint/no-empty-object-type': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
         'react/function-component-definition': [
             'error',
             {
