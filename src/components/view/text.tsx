@@ -13,11 +13,14 @@ export interface TextProps {
 export const Text = styled.span<TextProps>`
 	font-family: ${({ theme }) => theme.typography.fontFamily.base};
 	font-size: ${({ theme, fontSize }) =>
-		fontSize ? convertSizeToPixels(fontSize) : theme.typography.fontSize.base};
-	color: ${({ theme, design }) =>
-		design
+		fontSize
+			? `${convertSizeToPixels(fontSize)}px`
+			: theme.typography.fontSize.base};
+	color: ${({ theme, design, color }) =>
+		color ??
+		(design
 			? theme.colors.text[
 					convertHyphenToCamelCase(design) as keyof typeof theme.colors.text
 				]
-			: theme.colors.text.onPrimary};
+			: theme.colors.text.onPrimary)};
 `;

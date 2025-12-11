@@ -4,17 +4,20 @@ import { Flex } from "../../../components/view";
 
 interface EnvelopeProps {
 	children: React.ReactNode | React.ReactNode[];
+	style?: React.CSSProperties;
+	onOpenChange?: (opened: boolean) => void;
 }
 
-export const Envelope = ({ children }: EnvelopeProps) => {
+export const Envelope = ({ children, style, onOpenChange }: EnvelopeProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handleClick = () => {
-		setIsOpen((prev) => !prev);
+		setIsOpen(!isOpen);
+		onOpenChange?.(!isOpen);
 	};
 
 	return (
-		<div className={styles.envelopeWrapper}>
+		<div className={styles.envelopeWrapper} style={style}>
 			<div
 				className={`${styles.envelope} ${isOpen ? styles.open : styles.close}`}
 				onMouseDown={handleClick}
