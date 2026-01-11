@@ -27,6 +27,8 @@ module.exports = {
         'react/jsx-curly-brace-presence': 'off',
         '@typescript-eslint/no-empty-object-type': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
+        'no-plusplus': 'off',
+        'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': [
             'error',
             {

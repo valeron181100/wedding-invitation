@@ -1,24 +1,42 @@
-export const theme = {
-	colors: {
+import { createTheme } from "@mui/material";
+
+const mainRedColor = "#5c0607";
+
+export const theme = createTheme({
+	palette: {
+		primary: {
+			main: mainRedColor,
+			contrastText: "#F7D88C",
+		},
+		secondary: {
+			main: "#fff5d4",
+			contrastText: mainRedColor,
+		},
 		background: {
-			primary: "#5c0607",
-			secondary: "#fff5d4",
+			default: mainRedColor,
+			paper: "#fff5d4",
 		},
 		text: {
-			onPrimary: "#F7D88C",
-			onSecondary: "#5c0607",
-			titleWarm: "#FFEBED",
+			primary: mainRedColor,
+			secondary: "#F7D88C",
 		},
 	},
+
 	typography: {
-		fontSize: {
-			base: "1.3em",
-			title: "3.5em",
+		fontFamily: "tagesschrift, Arial, sans-serif",
+
+		body1: {
+			fontSize: "1.3em",
 		},
-		fontFamily: {
-			base: "tagesschrift",
-			monospace: "courier, courier",
-			cursive: "als-finlandia-script",
+
+		h1: {
+			fontSize: "3.5em",
+			color: "#FFEBED",
+			fontFamily: "als-finlandia-script, cursive",
+		},
+
+		code: {
+			fontFamily: "courier, courier",
 		},
 	},
-};
+});

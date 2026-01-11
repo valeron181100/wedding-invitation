@@ -37,7 +37,7 @@ export const Flex = styled.div<FlexProps>`
 			: width;
 	}};
 	height: ${(props) => {
-		const height = props.height ?? "100%";
+		const height = props.height ?? "";
 		return props.p
 			? `calc(${height} - ${convertSizeToPixels(props.p) * 2}px)`
 			: height;

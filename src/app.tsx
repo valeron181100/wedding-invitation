@@ -2,8 +2,9 @@ import { ThemeProvider } from "@emotion/react";
 import { Body } from "./layout";
 import { MainSection } from "./sections/main-section/main-section";
 import { theme } from "./theme";
-import { TestSecSection } from "./sections/test-sec-section";
 import { InviteMessageSection } from "./sections/invite-message-section/invite-message-section";
+import { WeddingCeremonyInvitationSection } from "./sections/wedding-ceremony-invitation-section/wedding-ceremony-invitation-section";
+import { CelebratingInvitationSection } from "./sections/celebrating-invitation-section/celebrating-invitation-section";
 
 const App = () => {
 	return (
@@ -11,7 +12,8 @@ const App = () => {
 			<Body>
 				<MainSection />
 				<InviteMessageSection />
-				<TestSecSection />
+				<WeddingCeremonyInvitationSection />
+				<CelebratingInvitationSection />
 			</Body>
 		</ThemeProvider>
 	);

@@ -9,15 +9,26 @@ interface TitleTextProps {
 	fullCursive?: boolean;
 	style?: React.CSSProperties;
 	fontSize?: Size;
-	children?: string;
+	design?: "on-primary" | "on-secondary";
+	children?: string | React.ReactNode;
 }
 
-const TitleTextContainer = styled.span<{ nowrap?: boolean; fontSize?: string }>`
+const TitleTextContainer = styled.span<{
+	nowrap?: boolean;
+	fontSize?: string;
+	design?: "on-primary" | "on-secondary";
+}>`
 	font-size: ${({ theme, fontSize }) =>
-		fontSize || theme.typography.fontSize.title};
-	color: ${({ theme }) => theme.colors.text.titleWarm};
+		fontSize || theme.typography.h1.fontSize};
+
 	font-weight: bold;
+
 	white-space: ${({ nowrap }) => (nowrap ? "nowrap" : "wrap")};
+
+	color: ${({ theme, design }) =>
+		design === "on-secondary"
+			? theme.palette.secondary.contrastText
+			: theme.palette.primary.contrastText};
 `;
 
 export const TitleText = ({
@@ -26,30 +37,37 @@ export const TitleText = ({
 	nowrap = false,
 	fullCursive = false,
 	fontSize,
+	design = "on-primary",
 	style,
 }: TitleTextProps) => {
 	const theme = useTheme();
-	const contentCursivePart = children?.slice(0, firstLettersItalicAmount);
-	const contentBaseline = children?.slice(firstLettersItalicAmount);
+
+	const text = typeof children === "string" ? children : String(children ?? "");
+
+	const contentCursivePart = text.slice(0, firstLettersItalicAmount);
+	const contentBaseline = text.slice(firstLettersItalicAmount);
 
 	return (
 		<TitleTextContainer
 			style={style}
+			design={design}
 			nowrap={nowrap}
 			fontSize={fontSize ? `${convertSizeToPixels(fontSize)}px` : undefined}
 		>
 			<span
 				style={{
-					fontFamily: theme.typography.fontFamily.cursive,
+					fontFamily: theme.typography.h1.fontFamily,
+					fontStyle: "italic",
 				}}
 			>
 				{contentCursivePart}
 			</span>
+
 			<span
 				style={{
 					fontFamily: fullCursive
-						? theme.typography.fontFamily.cursive
-						: theme.typography.fontFamily.base,
+						? theme.typography.h1.fontFamily
+						: theme.typography.fontFamily,
 				}}
 			>
 				{contentBaseline}

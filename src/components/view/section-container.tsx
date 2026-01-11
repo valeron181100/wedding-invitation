@@ -9,6 +9,9 @@ export const SectionContainer = styled(Flex)<SectionContainerProps>`
 	width: 100vw;
 	max-width: 100vw;
 	height: 100vh;
+
 	background-color: ${({ theme, design }) =>
-		theme.colors.background[design ?? "secondary"]};
+		design === "primary"
+			? theme.palette.primary.main
+			: theme.palette.background.paper};
 `;

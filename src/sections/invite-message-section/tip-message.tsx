@@ -18,7 +18,7 @@ export const TipMessage = () => {
 			direction={"column"}
 			alignItems={"center"}
 		>
-			<Flex width={"50%"}>
+			<Flex width={"50%"} height={"100%"}>
 				<FancyArrowAnimated rotation={-30} scale={0.7} />
 			</Flex>
 			<motion.div
@@ -35,7 +35,7 @@ export const TipMessage = () => {
 					ease: "easeInOut",
 				}}
 			>
-				<Text fontSize={"s8"} color={theme.colors.text.titleWarm}>
+				<Text fontSize={"s8"} color={theme.palette.primary.contrastText}>
 					Открой конверт...
 				</Text>
 			</motion.div>

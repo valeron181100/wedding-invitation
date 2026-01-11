@@ -20,7 +20,7 @@ export const InviteMessageSection = () => {
 			direction="column"
 			justifyContent={"space-between"}
 		>
-			<Flex direction={"column"} p={"s6"} alignItems={"center"}>
+			<Flex direction={"column"} p={"s6"} alignItems={"center"} height={"100%"}>
 				<TitleText fullCursive fontSize={"s18"} style={{ alignSelf: "center" }}>
 					Мы женимся!
 				</TitleText>
@@ -34,7 +34,12 @@ export const InviteMessageSection = () => {
 						style={{ marginBottom: 80 }}
 						onOpenChange={handleEnvelopeOpened}
 					>
-						<Flex direction={"column"} gap={"s6"} ref={letterContentRef}>
+						<Flex
+							direction={"column"}
+							gap={"s6"}
+							height={"100%"}
+							ref={letterContentRef}
+						>
 							<EnvelopeTitle>Приглашение на свадьбу!</EnvelopeTitle>
 							<EnvelopeText>
 								В этом году есть день, который станет для нас по-настоящему
