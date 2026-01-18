@@ -2,8 +2,7 @@ import { useTheme } from "@emotion/react";
 import PriorityHighRoundedIcon from "@mui/icons-material/PriorityHighRounded";
 import { Flex, SectionContainer, Text, TitleText } from "../../components/view";
 import { DateContainer } from "../../components/view/date-container";
-import { Card } from "../../components/view/card";
-import { StyledLocationIcon } from "./styles";
+import { StyledLocationIcon, StyledPeoniesFirstIcon } from "./styles";
 import { TimeLineSlider } from "./time-line-slider";
 
 export const CelebratingInvitationSection = () => {
@@ -11,6 +10,7 @@ export const CelebratingInvitationSection = () => {
 
 	return (
 		<SectionContainer direction="column" gap={"s6"} design={"secondary"}>
+			<StyledPeoniesFirstIcon />
 			<TitleText
 				fullCursive
 				design={"on-secondary"}
@@ -67,7 +67,7 @@ export const CelebratingInvitationSection = () => {
 						/>
 					</Flex>
 				</Flex>
-				<Flex direction={"column"} alignItems={"center"} gap={"s4"}>
+				<Flex direction={"column"} alignItems={"center"} gap={"s10"}>
 					<a
 						href={
 							"https://yandex.ru/maps/org/alpina_park/135232963569/?ll=44.573434%2C42.973447&z=18.37"
@@ -76,7 +76,7 @@ export const CelebratingInvitationSection = () => {
 							textDecoration: "none",
 						}}
 					>
-						<Card p={"s6"} design={"primary"}>
+						<Flex gap={"s2"}>
 							<StyledLocationIcon
 								color={theme.palette.secondary.contrastText}
 							/>
@@ -86,12 +86,12 @@ export const CelebratingInvitationSection = () => {
 									Республика Северная Осетия — Алания, г. Владикавказ
 								</Text>
 							</Flex>
-						</Card>
+						</Flex>
 					</a>
-					<Card p={"s3"} design={"primary"} gap={"s3"} alignItems={"center"}>
+					<Flex gap={"s3"} alignItems={"center"} p={"s4"}>
 						<PriorityHighRoundedIcon
 							style={{
-								transform: "scale(1.7, 2)",
+								transform: "scale(1.5, 1.8)",
 								rotate: "-3deg",
 								color: theme.palette.secondary.contrastText,
 							}}
@@ -99,7 +99,7 @@ export const CelebratingInvitationSection = () => {
 						<Text design={"on-secondary"} fontSize={"s4"}>
 							Детали трансфера уточняются. Скоро мы поделимся ими с вами.
 						</Text>
-					</Card>
+					</Flex>
 					<TimeLineSlider />
 				</Flex>
 			</Flex>

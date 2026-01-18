@@ -1,12 +1,14 @@
+import { useTheme } from "@emotion/react";
 import { Flex, SectionContainer, Text, TitleText } from "../../components/view";
 import { DateContainer } from "../../components/view/date-container";
-import { Card } from "../../components/view/card";
-import { StyledLocationIcon } from "./styles";
+import { StyledLocationIcon, StyledPeoniesSecIcon } from "./styles";
 import { TimeLineSlider } from "./time-line-slider";
 
 export const WeddingCeremonyInvitationSection = () => {
+	const theme = useTheme();
 	return (
 		<SectionContainer direction="column" gap={"s6"}>
+			<StyledPeoniesSecIcon />
 			<TitleText
 				fullCursive
 				design={"on-secondary"}
@@ -34,15 +36,14 @@ export const WeddingCeremonyInvitationSection = () => {
 						<DateContainer date={22} dayOfWeek={"пн"} />
 					</Flex>
 				</Flex>
-				<Card p={"s6"}>
-					<StyledLocationIcon />
+				<Flex gap={"s2"}>
+					<StyledLocationIcon color={theme.palette.secondary.contrastText} />
 					<Flex direction={"column"} gap={"s1"}>
 						<Text design={"on-secondary"}>ЗАГС</Text>
-						<Text design={"on-secondary"}>
-							Фурштатская ул., 52, Санкт-Петербург
-						</Text>
+						<Text design={"on-secondary"}>Фурштатская ул., 52</Text>
+						<Text design={"on-secondary"}>Санкт-Петербург</Text>
 					</Flex>
-				</Card>
+				</Flex>
 				<TimeLineSlider />
 			</Flex>
 		</SectionContainer>

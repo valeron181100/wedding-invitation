@@ -4,9 +4,10 @@ import { PeopleGroupIcon } from "../../components/view/people-group-icon";
 import { ChampagneIcon } from "../../components/view/champagne-icon";
 import { SleepingClockIcon } from "../../components/view/sleeping-clock-icon";
 import { RingsIcon } from "../../components/view/rings-icon";
+import { PeoniesIcon } from "../../components/view/peonies-icon";
 
 export const StyledLocationIcon = styled(LocationIcon)`
-	width: 120px;
+	width: 70px;
 `;
 
 export const StyledPeopleGroupIcon = styled(PeopleGroupIcon)`
@@ -28,4 +29,12 @@ export const StyledSleepingClockIcon = styled(SleepingClockIcon)`
 	margin-top: -30px;
 	margin-right: -20px;
 	width: 45%;
+`;
+
+export const StyledPeoniesFirstIcon = styled(PeoniesIcon)`
+	position: absolute;
+	z-index: 999;
+	width: 100vw;
+	left: -255px;
+	transform: translateY(-29%) scaleX(-1) rotate(-25deg);
 `;
