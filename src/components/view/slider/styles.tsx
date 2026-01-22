@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IconButton } from "@mui/material";
 import { Swiper } from "swiper/react";
 
 export const StyledSwiper = styled(Swiper)<{ paginationColor?: string }>`
@@ -16,4 +17,8 @@ export const StyledSwiper = styled(Swiper)<{ paginationColor?: string }>`
 				? props.paginationColor
 				: props.theme.palette.primary.main};
 	}
+`;
+
+export const SwiperNavButton = styled(IconButton)`
+	z-index: 1;
 `;

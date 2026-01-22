@@ -6,12 +6,21 @@ interface SectionContainerProps extends FlexProps {
 }
 
 export const SectionContainer = styled(Flex)<SectionContainerProps>`
-	width: 100vw;
-	max-width: 100vw;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
 	height: 100vh;
 
 	background-color: ${({ theme, design }) =>
 		design === "primary"
 			? theme.palette.primary.main
 			: theme.palette.background.paper};
+`;
+
+export const SectionContainerContent = styled(Flex)`
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	max-width: 520px;
 `;

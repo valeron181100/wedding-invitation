@@ -3,7 +3,6 @@ import { Pagination } from "swiper/modules";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import type { SvgIconOwnProps } from "@mui/material";
-import { IconButton } from "@mui/material";
 import { SwiperSlide } from "swiper/react";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -12,7 +11,7 @@ import "swiper/css";
 // @ts-expect-error
 import "swiper/css/pagination";
 import { Swiper } from "swiper";
-import { StyledSwiper } from "./styled-swiper";
+import { StyledSwiper, SwiperNavButton } from "./styles";
 import { Flex } from "../flex";
 
 interface SliderProps {
@@ -35,9 +34,9 @@ export const Slider = ({
 	return (
 		<Flex gap={"s2"} alignItems={"center"}>
 			{navigation && (
-				<IconButton size={"large"} onClick={() => control?.slidePrev()}>
+				<SwiperNavButton size={"large"} onClick={() => control?.slidePrev()}>
 					<ArrowBackIosNewRoundedIcon color={navButtonsColor} />
-				</IconButton>
+				</SwiperNavButton>
 			)}
 			<StyledSwiper
 				spaceBetween={30}
@@ -51,9 +50,9 @@ export const Slider = ({
 					: children}
 			</StyledSwiper>
 			{navigation && (
-				<IconButton size={"large"} onClick={() => control?.slideNext()}>
+				<SwiperNavButton size={"large"} onClick={() => control?.slideNext()}>
 					<ArrowForwardIosRoundedIcon color={navButtonsColor} />
-				</IconButton>
+				</SwiperNavButton>
 			)}
 		</Flex>
 	);

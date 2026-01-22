@@ -5,6 +5,7 @@ import { ChampagneIcon } from "../../components/view/champagne-icon";
 import { SleepingClockIcon } from "../../components/view/sleeping-clock-icon";
 import { RingsIcon } from "../../components/view/rings-icon";
 import { PeoniesIcon } from "../../components/view/peonies-icon";
+import { Card } from "../../components/view/card";
 
 export const StyledLocationIcon = styled(LocationIcon)`
 	width: 110px;
@@ -31,9 +32,38 @@ export const StyledSleepingClockIcon = styled(SleepingClockIcon)`
 	width: 45%;
 `;
 
+export const StyledSliderFrameCard = styled(Card)`
+	background-color: #fbf3d9;
+`;
+
 export const StyledPeoniesSecIcon = styled(PeoniesIcon)`
 	position: absolute;
-	width: 100vw;
-	right: -255px;
-	transform: translateY(53%) rotate(-25deg);
+	top: 0;
+	right: 0;
+	z-index: 1;
+
+	@media screen and (min-width: 1025px) {
+		width: 70vw;
+		transform: translate(35vw, 20vh) rotate(-25deg);
+	}
+
+	@media screen and (max-width: 1024px) {
+		width: 65vw;
+		transform: translate(50%, 20vh) rotate(-25deg);
+	}
+
+	@media screen and (max-width: 800px) {
+		width: 60vw;
+		transform: translate(50%, 28vh) rotate(-25deg);
+	}
+
+	@media screen and (max-width: 500px) {
+		width: 90vw;
+		transform: translate(50%, 30vh) rotate(-25deg);
+	}
+
+	@media screen and (max-width: 400px) {
+		width: 70vw;
+		transform: translate(50%, 32vh) rotate(-25deg);
+	}
 `;

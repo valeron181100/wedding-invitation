@@ -1,14 +1,14 @@
 import { useTheme } from "@emotion/react";
 import { Slider, SliderFrame, Text, TitleText } from "../../components/view";
-import { Card } from "../../components/view/card";
 import {
 	StyledChampagneIcon,
 	StyledPeopleGroupIcon,
 	StyledRingsIcon,
+	StyledSliderFrameCard,
 } from "./styles";
 
 export const TimeLineSlider = () => {
-	const sliderFrameHeight = "280px";
+	const sliderFrameHeight = "262px";
 	const theme = useTheme();
 
 	return (
@@ -19,7 +19,7 @@ export const TimeLineSlider = () => {
 			paginationColor={theme.palette.secondary.contrastText}
 		>
 			<SliderFrame>
-				<Card
+				<StyledSliderFrameCard
 					direction={"column"}
 					alignItems={"center"}
 					justifyContent={"space-between"}
@@ -36,10 +36,10 @@ export const TimeLineSlider = () => {
 					>
 						Сбор гостей
 					</Text>
-				</Card>
+				</StyledSliderFrameCard>
 			</SliderFrame>
 			<SliderFrame>
-				<Card
+				<StyledSliderFrameCard
 					direction={"column"}
 					alignItems={"center"}
 					justifyContent={"space-between"}
@@ -56,10 +56,10 @@ export const TimeLineSlider = () => {
 					>
 						Церемония бракосочетания
 					</Text>
-				</Card>
+				</StyledSliderFrameCard>
 			</SliderFrame>
 			<SliderFrame>
-				<Card
+				<StyledSliderFrameCard
 					direction={"column"}
 					alignItems={"center"}
 					justifyContent={"space-between"}
@@ -76,7 +76,7 @@ export const TimeLineSlider = () => {
 					>
 						Начало торжества
 					</Text>
-				</Card>
+				</StyledSliderFrameCard>
 			</SliderFrame>
 		</Slider>
 	);

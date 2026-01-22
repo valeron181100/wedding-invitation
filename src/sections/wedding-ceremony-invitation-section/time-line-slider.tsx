@@ -1,18 +1,18 @@
 import { Slider, SliderFrame, Text, TitleText } from "../../components/view";
-import { Card } from "../../components/view/card";
 import {
 	StyledChampagneIcon,
 	StyledPeopleGroupIcon,
 	StyledRingsIcon,
 	StyledSleepingClockIcon,
+	StyledSliderFrameCard,
 } from "./styles";
 
 export const TimeLineSlider = () => {
-	const sliderFrameHeight = "280px";
+	const sliderFrameHeight = "262px";
 	return (
 		<Slider pagination navigation>
 			<SliderFrame>
-				<Card
+				<StyledSliderFrameCard
 					direction={"column"}
 					alignItems={"center"}
 					justifyContent={"space-between"}
@@ -28,10 +28,10 @@ export const TimeLineSlider = () => {
 					>
 						Сбор гостей
 					</Text>
-				</Card>
+				</StyledSliderFrameCard>
 			</SliderFrame>
 			<SliderFrame>
-				<Card
+				<StyledSliderFrameCard
 					direction={"column"}
 					alignItems={"center"}
 					justifyContent={"space-between"}
@@ -47,10 +47,10 @@ export const TimeLineSlider = () => {
 					>
 						Церемония бракосочетания
 					</Text>
-				</Card>
+				</StyledSliderFrameCard>
 			</SliderFrame>
 			<SliderFrame>
-				<Card
+				<StyledSliderFrameCard
 					direction={"column"}
 					alignItems={"center"}
 					justifyContent={"space-between"}
@@ -66,10 +66,10 @@ export const TimeLineSlider = () => {
 					>
 						Начало фуршета
 					</Text>
-				</Card>
+				</StyledSliderFrameCard>
 			</SliderFrame>
 			<SliderFrame>
-				<Card
+				<StyledSliderFrameCard
 					direction={"column"}
 					alignItems={"center"}
 					justifyContent={"space-between"}
@@ -85,7 +85,7 @@ export const TimeLineSlider = () => {
 					>
 						Конец фуршета
 					</Text>
-				</Card>
+				</StyledSliderFrameCard>
 			</SliderFrame>
 		</Slider>
 	);

@@ -5,6 +5,7 @@ import { Envelope } from "./envelope/envelope";
 import { EnvelopeText } from "./envelope-text";
 import { EnvelopeTitle } from "./envelope-title";
 import { TipMessage } from "./tip-message";
+import { SectionContainerContent } from "../../components/view/section-container";
 
 export const InviteMessageSection = () => {
 	const letterContentRef = useRef<HTMLDivElement>(null);
@@ -20,42 +21,53 @@ export const InviteMessageSection = () => {
 			direction="column"
 			justifyContent={"space-between"}
 		>
-			<Flex direction={"column"} p={"s6"} alignItems={"center"} height={"100%"}>
-				<TitleText fullCursive fontSize={"s18"} style={{ alignSelf: "center" }}>
-					Мы женимся!
-				</TitleText>
+			<SectionContainerContent>
 				<Flex
-					height={"100%"}
-					width={"100%"}
+					direction={"column"}
+					p={"s6"}
 					alignItems={"center"}
-					justifyContent={"center"}
+					height={"100%"}
 				>
-					<Envelope
-						style={{ marginBottom: 80 }}
-						onOpenChange={handleEnvelopeOpened}
+					<TitleText
+						fullCursive
+						fontSize={"s18"}
+						style={{ alignSelf: "center" }}
 					>
-						<Flex
-							direction={"column"}
-							gap={"s6"}
-							height={"100%"}
-							ref={letterContentRef}
+						Мы женимся!
+					</TitleText>
+					<Flex
+						height={"100%"}
+						width={"100%"}
+						alignItems={"center"}
+						justifyContent={"center"}
+					>
+						<Envelope
+							style={{ marginBottom: 80 }}
+							onOpenChange={handleEnvelopeOpened}
 						>
-							<EnvelopeTitle>Приглашение на свадьбу!</EnvelopeTitle>
-							<EnvelopeText>
-								В этом году есть день, который станет для нас по-настоящему
-								особенным. И мы хотим разделить его с теми, кто дорог нашему
-								сердцу.
-							</EnvelopeText>
-							<EnvelopeText>
-								С искренней радостью приглашаем вас присоединиться к нам на
-								церемонии бракосочетания в Санкт-Петербурге и на праздничном
-								торжестве во Владикавказе.
-							</EnvelopeText>
-						</Flex>
-					</Envelope>
+							<Flex
+								direction={"column"}
+								gap={"s6"}
+								height={"100%"}
+								ref={letterContentRef}
+							>
+								<EnvelopeTitle>Приглашение на свадьбу!</EnvelopeTitle>
+								<EnvelopeText>
+									В этом году есть день, который станет для нас по-настоящему
+									особенным. И мы хотим разделить его с теми, кто дорог нашему
+									сердцу.
+								</EnvelopeText>
+								<EnvelopeText>
+									С искренней радостью приглашаем вас присоединиться к нам на
+									церемонии бракосочетания в Санкт-Петербурге и на праздничном
+									торжестве во Владикавказе.
+								</EnvelopeText>
+							</Flex>
+						</Envelope>
+					</Flex>
+					<AnimatePresence>{!envelopeOpened && <TipMessage />}</AnimatePresence>
 				</Flex>
-				<AnimatePresence>{!envelopeOpened && <TipMessage />}</AnimatePresence>
-			</Flex>
+			</SectionContainerContent>
 		</SectionContainer>
 	);
 };
