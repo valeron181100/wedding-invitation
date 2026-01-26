@@ -44,22 +44,22 @@ export const StyledPeoniesFirstIcon = styled(PeoniesIcon)`
 
 	@media screen and (min-width: 1025px) {
 		width: 70vw;
-		//transform: translate(35vw, 20vh) scaleX(-1) rotate(-25deg);
-		transform: translate(-35vw, -20vh) scaleX(-1) rotate(-25deg);
+		//transform: translate(35vw, 20dvh) scaleX(-1) rotate(-25deg);
+		transform: translate(-35vw, -20dvh) scaleX(-1) rotate(-25deg);
 	}
 
 	@media screen and (max-width: 1024px) {
 		width: 70vw;
-		transform: translate(-50%, -15vh) scaleX(-1) rotate(-25deg);
+		transform: translate(-50%, -15dvh) scaleX(-1) rotate(-25deg);
 	}
 
 	@media screen and (max-width: 800px) {
 		width: 75vw;
-		transform: translate(-50%, -12vh) scaleX(-1) rotate(-25deg);
+		transform: translate(-50%, -12dvh) scaleX(-1) rotate(-25deg);
 	}
 
 	@media screen and (max-width: 500px) {
 		width: 75vw;
-		transform: translate(-50%, -10vh) scaleX(-1) rotate(-25deg);
+		transform: translate(-50%, -10dvh) scaleX(-1) rotate(-25deg);
 	}
 `;

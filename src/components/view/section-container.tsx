@@ -10,7 +10,7 @@ export const SectionContainer = styled(Flex)<SectionContainerProps>`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 100vh;
+	height: 100dvh;
 
 	background-color: ${({ theme, design }) =>
 		design === "primary"
@@ -21,6 +21,6 @@ export const SectionContainer = styled(Flex)<SectionContainerProps>`
 export const SectionContainerContent = styled(Flex)`
 	position: relative;
 	width: 100%;
-	height: 100vh;
+	height: 100dvh;
 	max-width: 520px;
 `;

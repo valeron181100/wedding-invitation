@@ -44,26 +44,26 @@ export const StyledPeoniesSecIcon = styled(PeoniesIcon)`
 
 	@media screen and (min-width: 1025px) {
 		width: 70vw;
-		transform: translate(35vw, 20vh) rotate(-25deg);
+		transform: translate(35vw, 20dvh) rotate(-25deg);
 	}
 
 	@media screen and (max-width: 1024px) {
 		width: 65vw;
-		transform: translate(50%, 20vh) rotate(-25deg);
+		transform: translate(50%, 20dvh) rotate(-25deg);
 	}
 
 	@media screen and (max-width: 800px) {
 		width: 60vw;
-		transform: translate(50%, 28vh) rotate(-25deg);
+		transform: translate(50%, 28dvh) rotate(-25deg);
 	}
 
 	@media screen and (max-width: 500px) {
 		width: 90vw;
-		transform: translate(50%, 30vh) rotate(-25deg);
+		transform: translate(50%, 30dvh) rotate(-25deg);
 	}
 
 	@media screen and (max-width: 400px) {
 		width: 70vw;
-		transform: translate(50%, 32vh) rotate(-25deg);
+		transform: translate(50%, 32dvh) rotate(-25deg);
 	}
 `;
