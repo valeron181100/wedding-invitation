@@ -18,7 +18,7 @@ export const theme = createTheme({
 		},
 		text: {
 			primary: mainRedColor,
-			secondary: "#F7D88C",
+			secondary: mainRedColor,
 		},
 	},
 
@@ -27,6 +27,12 @@ export const theme = createTheme({
 
 		body1: {
 			fontSize: "1.3em",
+		},
+		body2: {
+			fontSize: "0.7em",
+		},
+		h6: {
+			fontSize: "1em",
 		},
 
 		h1: {
@@ -40,3 +46,26 @@ export const theme = createTheme({
 		},
 	},
 });
+theme!.components!.MuiTextField = {
+	styleOverrides: {
+		root: {
+			"& .MuiInputBase-input": {
+				fontSize: theme.typography.body2.fontSize,
+			},
+			"& .MuiFormLabel-root": {
+				fontSize: theme.typography.h6.fontSize,
+			},
+		},
+	},
+};
+
+theme!.components!.MuiRadioGroup = {
+	styleOverrides: {
+		root: {
+			"& .MuiFormControlLabel-root": {
+				fontSize: theme.typography.body2.fontSize,
+				border: "solid 2px blue",
+			},
+		},
+	},
+};
