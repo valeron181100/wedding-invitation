@@ -11,6 +11,8 @@ export const SectionContainer = styled(Flex)<SectionContainerProps>`
 	justify-content: center;
 	width: 100%;
 	height: 100dvh;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
 
 	background-color: ${({ theme, design }) =>
 		design === "primary"
