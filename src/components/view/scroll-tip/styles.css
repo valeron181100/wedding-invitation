@@ -1,0 +1,46 @@
+.scroll-tip-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none; /* Allows clicks to pass through to content behind it */
+    animation: fadeIn 1s ease-out;
+}
+
+.scroll-text {
+    margin: 0 0 20px 0;
+    font-family: courier, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333; /* Change based on your background */
+    text-shadow: 0 0 11px #000000;
+}
+
+.scroll-arrow {
+    animation: bounce 2s infinite;
+    color: #333;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
