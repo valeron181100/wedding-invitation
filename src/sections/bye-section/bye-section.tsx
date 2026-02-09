@@ -1,0 +1,10 @@
+import { SectionContainer } from "../../components/view";
+import { ByeSectionImage } from "./bye-section-image";
+
+export const ByeSection = () => {
+	return (
+		<SectionContainer direction="column" justifyContent={"space-between"}>
+			<ByeSectionImage src={"/public/assets/wedding-good-bye-4.webp"} />
+		</SectionContainer>
+	);
+};

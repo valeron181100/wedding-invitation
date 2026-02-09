@@ -7,6 +7,7 @@ import { InviteMessageSection } from "./sections/invite-message-section/invite-m
 import { WeddingCeremonyInvitationSection } from "./sections/wedding-ceremony-invitation-section/wedding-ceremony-invitation-section";
 import { CelebratingInvitationSection } from "./sections/celebrating-invitation-section/celebrating-invitation-section";
 import { FormSection } from "./sections/form-section/form-section";
+import { ByeSection } from "./sections/bye-section/bye-section";
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 					<WeddingCeremonyInvitationSection />
 					<CelebratingInvitationSection />
 					<FormSection />
+					<ByeSection />
 				</Body>
 			</SnackbarProvider>
 		</ThemeProvider>
