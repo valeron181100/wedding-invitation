@@ -10,6 +10,7 @@ import { CelebratingInvitationSection } from "./sections/celebrating-invitation-
 import { FormSection } from "./sections/form-section/form-section";
 import { ByeSection } from "./sections/bye-section/bye-section";
 import ScrollTip from "./components/view/scroll-tip/scroll-tip";
+import { ContactsSection } from "./sections/contacts-section/contacts-section";
 
 const App = () => {
 	const bodyRef = useRef<HTMLDivElement>(null);
@@ -48,6 +49,7 @@ const App = () => {
 					<WeddingCeremonyInvitationSection />
 					<CelebratingInvitationSection />
 					<FormSection />
+					<ContactsSection />
 					<ByeSection />
 				</Body>
 			</SnackbarProvider>
