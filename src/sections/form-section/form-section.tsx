@@ -40,23 +40,28 @@ export const FormSection = () => {
 
 	const handleFormSuccess = async (data: GuestFormSchema) => {
 		setFormSending(true);
-		const formData = new URLSearchParams();
 
-		formData.append("fullName", data.fullName);
-		formData.append("inviteAnswerId", data.inviteAnswerId);
-		formData.append("access_key", "8e28a6fb-619f-42e8-adca-ccb37e2c6f4e");
+		const payload = {
+			fullName: data.fullName,
+			inviteAnswerId: data.inviteAnswerId,
+			createdAt: new Date().toISOString(),
+		};
 
 		try {
-			const response = await fetch("https://api.web3forms.com/submit", {
+			const response = await fetch("http://localhost:7007/api/forms", {
 				method: "POST",
-				body: formData,
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(payload),
 			});
 
 			if (!response.ok) {
 				showFormSendErrorMessage();
+			} else {
+				showFormSuccessMessage();
 			}
 
-			showFormSuccessMessage();
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (_) {
 			showFormSendErrorMessage();
