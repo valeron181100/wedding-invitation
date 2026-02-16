@@ -21,7 +21,7 @@ export const InviteMessageSection = () => {
 			direction="column"
 			justifyContent={"space-between"}
 		>
-			<SectionContainerContent>
+			<SectionContainerContent overflowVisible>
 				<Flex
 					direction={"column"}
 					p={"s6"}

@@ -20,10 +20,12 @@ export const SectionContainer = styled(Flex)<SectionContainerProps>`
 			: theme.palette.background.paper};
 `;
 
-export const SectionContainerContent = styled(Flex)`
+export const SectionContainerContent = styled(Flex)<{
+	overflowVisible?: boolean;
+}>`
 	position: relative;
 	width: 100%;
 	height: 100dvh;
 	max-width: 520px;
-	overflow: hidden;
+	${({ overflowVisible }) => (!overflowVisible ? "overflow-y: hidden;" : "")}
 `;
