@@ -25,4 +25,5 @@ export const SectionContainerContent = styled(Flex)`
 	width: 100%;
 	height: 100dvh;
 	max-width: 520px;
+	overflow: hidden;
 `;
