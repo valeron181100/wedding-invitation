@@ -16,71 +16,71 @@ body {
 
 @font-face {
     font-family: 'pompadur';
-    src: url("/public/assets/fonts/pompadur.ttf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/pompadur.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'aurora-script';
-    src: url("/public/assets/fonts/aurora-script.ttf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/aurora-script.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'good-vibes-cyr';
-    src: url("/public/assets/fonts/good-vibes-cyr.ttf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/good-vibes-cyr.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'old-standard-tt';
-    src: url("/public/assets/fonts/old-standard-tt-regular.ttf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/old-standard-tt-regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'old-standard-tt';
-    src: url("/public/assets/fonts/old-standard-tt-italic.ttf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/old-standard-tt-italic.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'old-standard-tt';
-    src: url("/public/assets/fonts/old-standard-tt-bold.ttf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/old-standard-tt-bold.ttf") format("truetype");
     font-weight: bold;
 }
 
 @font-face {
     font-family: 'als-finlandia-script';
-    src: url("/public/assets/fonts/als-finlandia-script.otf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/als-finlandia-script.otf") format("truetype");
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'als-finlandia-script';
-    src: url("/public/assets/fonts/als-finlandia-script-bold.otf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/als-finlandia-script-bold.otf") format("truetype");
     font-weight: bold;
 }
 
 @font-face {
     font-family: 'tagesschrift';
-    src: url("/public/assets/fonts/tagesschrift.ttf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/tagesschrift.ttf") format("truetype");
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'bully-g';
-    src: url("/public/assets/fonts/bully-g-regular.otf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/bully-g-regular.otf") format("truetype");
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'bully-g';
-    src: url("/public/assets/fonts/bully-g-bold.otf") format("truetype");
+    src: url("/wedding-invitation/assets/fonts/bully-g-bold.otf") format("truetype");
     font-weight: bold;
 }

@@ -4,7 +4,9 @@ import { MainSectionImage } from "./components/main-section-image";
 export const MainSection = () => {
 	return (
 		<SectionContainer direction="column" justifyContent={"space-between"}>
-			<MainSectionImage src={"/public/assets/wedding-main-3.webp"} />
+			<MainSectionImage
+				src={"/wedding-invitation/assets/wedding-main-3.webp"}
+			/>
 		</SectionContainer>
 	);
 };
