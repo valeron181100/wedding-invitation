@@ -16,14 +16,48 @@ import {
 } from "./styles";
 import { theme } from "../../theme";
 import type { GuestFormSchema } from "./types";
-import { useAppSettings } from "../../context/app-settings-context";
+import { AppVersion, useAppSettings } from "../../context/app-settings-context";
 import { GuestFields } from "./guest-fields";
+
+const inviteAnswerOptionsMap: Record<
+	AppVersion,
+	{ id: string; label: string }[]
+> = {
+	[AppVersion.EVERYWHERE]: [
+		{
+			id: "both",
+			label: "Буду и на регистрации и на основном торжестве!",
+		},
+		{
+			id: "reg-only",
+			label: "Буду только на регистрации",
+		},
+		{
+			id: "cel-only",
+			label: "Буду только на основном торжестве",
+		},
+		{
+			id: "no",
+			label: "К сожалению не смогу присутствовать",
+		},
+	],
+	[AppVersion.CELEBRATION_ONLY]: [
+		{
+			id: "cel-only",
+			label: "Обязательно буду",
+		},
+		{
+			id: "no",
+			label: "К сожалению не смогу присутствовать",
+		},
+	],
+};
 
 export const FormSection = () => {
 	const { enqueueSnackbar } = useSnackbar();
 	const [formSending, setFormSending] = useState(false);
 	const [formSubmitted, setFormSubmitted] = useState(false);
-	const { people: peopleCount } = useAppSettings();
+	const { people: peopleCount, version } = useAppSettings();
 
 	const defaultValues: GuestFormSchema = {
 		guests: Array.from({ length: peopleCount ?? 1 }, () => ({ fullName: "" })),
@@ -43,7 +77,9 @@ export const FormSection = () => {
 		setFormSending(true);
 
 		const payload = {
-			guests: data.guests,
+			guests: data.guests.filter((guest) => !!guest.fullName),
+			siteVersion: version,
+			invitedPeopleAmount: peopleCount,
 			inviteAnswerId: data.inviteAnswerId,
 			createdAt: new Date().toISOString(),
 		};
@@ -159,25 +195,7 @@ export const FormSection = () => {
 														fontSize: theme.typography.body2.fontSize,
 													},
 												}}
-												options={[
-													{
-														id: "both",
-														label:
-															"Буду и на регистрации и на основном торжестве!",
-													},
-													{
-														id: "reg-only",
-														label: "Буду только на регистрации",
-													},
-													{
-														id: "cel-only",
-														label: "Буду только на основном торжестве",
-													},
-													{
-														id: "no",
-														label: "К сожалению не смогу присутствовать",
-													},
-												]}
+												options={inviteAnswerOptionsMap[version]}
 											/>
 											<Button
 												type={"submit"}

@@ -1,9 +1,16 @@
 import { createContext, useContext, useMemo } from "react";
 import type { ReactNode } from "react";
+import { castToEnum } from "../components/lib/cast-to-enum";
 
-interface AppSettings {
-	people: number | null;
+export interface AppSettings {
+	people: number;
+	version: AppVersion;
 	isCelebrationOnly: boolean;
+}
+
+export enum AppVersion {
+	EVERYWHERE = "oak",
+	CELEBRATION_ONLY = "fir",
 }
 
 export const AppSettingsContext = createContext<AppSettings | undefined>(
@@ -11,19 +18,23 @@ export const AppSettingsContext = createContext<AppSettings | undefined>(
 );
 
 export const AppSettingsProvider = ({ children }: { children: ReactNode }) => {
-	const settings = useMemo<AppSettings & { verValid: boolean }>(() => {
+	const settings = useMemo(() => {
 		const params = new URLSearchParams(window.location.search);
 
 		const peopleParam = params.get("people");
 		const verParam = params.get("ver");
 
-		const isCelebrationOnly = verParam === "fir";
-		const verValid = verParam === "fir" || verParam === "oak";
+		const isCelebrationOnly = verParam === AppVersion.CELEBRATION_ONLY;
+
+		const peopleParamParsed = peopleParam !== null ? Number(peopleParam) : null;
 
 		return {
-			people: peopleParam !== null ? Number(peopleParam) : null,
+			people:
+				peopleParamParsed !== null && !Number.isNaN(peopleParamParsed)
+					? peopleParamParsed
+					: null,
 			isCelebrationOnly,
-			verValid,
+			version: verParam ? castToEnum(AppVersion, verParam) : null,
 		};
 	}, []);
 
@@ -39,16 +50,20 @@ export const AppSettingsProvider = ({ children }: { children: ReactNode }) => {
 		return null;
 	}
 
-	if (!settings.verValid) {
+	if (!settings.version) {
 		// eslint-disable-next-line no-alert
 		alert("Параметр 'ver' не найден или указан неверно");
 		return null;
 	}
 
-	const { verValid, ...contextValue } = settings;
+	const contextParam: AppSettings = {
+		version: settings.version,
+		people: settings.people,
+		isCelebrationOnly: settings.isCelebrationOnly,
+	};
 
 	return (
-		<AppSettingsContext.Provider value={contextValue}>
+		<AppSettingsContext.Provider value={contextParam}>
 			{children}
 		</AppSettingsContext.Provider>
 	);
