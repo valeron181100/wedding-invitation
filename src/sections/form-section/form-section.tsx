@@ -2,13 +2,11 @@ import {
 	FormContainer,
 	FormErrorProvider,
 	RadioButtonGroup,
-	TextFieldElement,
 } from "react-hook-form-mui";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { useSnackbar } from "notistack";
 import { Flex, SectionContainer, TitleText } from "../../components/view";
-import { StyledPeoniesFirstIcon } from "../celebrating-invitation-section/styles";
 import { SectionContainerContent } from "../../components/view/section-container";
 import {
 	StyledFormContainer,
@@ -17,10 +15,18 @@ import {
 } from "./styles";
 import { theme } from "../../theme";
 import type { GuestFormSchema } from "./types";
+import { useAppSettings } from "../../context/app-settings-context";
+import { GuestFields } from "./guest-fields";
 
 export const FormSection = () => {
 	const { enqueueSnackbar } = useSnackbar();
 	const [formSending, setFormSending] = useState(false);
+	const { people: peopleCount } = useAppSettings();
+
+	const defaultValues: GuestFormSchema = {
+		guests: Array.from({ length: peopleCount ?? 1 }, () => ({ fullName: "" })),
+		inviteAnswerId: "",
+	};
 
 	const showFormSendErrorMessage = () => {
 		enqueueSnackbar({
@@ -42,7 +48,7 @@ export const FormSection = () => {
 		setFormSending(true);
 
 		const payload = {
-			fullName: data.fullName,
+			guests: data.guests,
 			inviteAnswerId: data.inviteAnswerId,
 			createdAt: new Date().toISOString(),
 		};
@@ -69,10 +75,16 @@ export const FormSection = () => {
 			setFormSending(false);
 		}
 	};
+
 	return (
 		<SectionContainer design={"secondary"}>
-			<StyledPeoniesFirstIcon />
-			<SectionContainerContent direction="column" gap={"s14"}>
+			<SectionContainerContent
+				direction="column"
+				gap={"s14"}
+				style={{
+					overflowY: "auto",
+				}}
+			>
 				<TitleText
 					fullCursive
 					design={"on-secondary"}
@@ -86,8 +98,11 @@ export const FormSection = () => {
 					alignItems={"center"}
 					height={"100%"}
 				>
-					<StyledLovelyFramePartTopIcon />
-					<FormContainer<GuestFormSchema> onSuccess={handleFormSuccess}>
+					<StyledLovelyFramePartTopIcon style={{ marginBottom: 16 }} />
+					<FormContainer<GuestFormSchema>
+						onSuccess={handleFormSuccess}
+						defaultValues={defaultValues}
+					>
 						<FormErrorProvider
 							onError={(error) => {
 								if (error.type === "required") {
@@ -103,17 +118,7 @@ export const FormSection = () => {
 								pl={"s9"}
 								pr={"s9"}
 							>
-								<TextFieldElement
-									required
-									style={{
-										width: "100%",
-									}}
-									size={"small"}
-									autoComplete={"off"}
-									margin={"dense"}
-									label={"Фамилия Имя Отчество"}
-									name={"fullName"}
-								/>
+								<GuestFields />
 								<RadioButtonGroup
 									label="Просим вас подтвердить своё присутствие"
 									name="inviteAnswerId"
@@ -148,13 +153,18 @@ export const FormSection = () => {
 										},
 									]}
 								/>
-								<Button type={"submit"} loading={formSending}>
+								<Button
+									type={"submit"}
+									loading={formSending}
+									variant={"outlined"}
+									size={"large"}
+								>
 									Отправить
 								</Button>
 							</Flex>
 						</FormErrorProvider>
 					</FormContainer>
-					<StyledLovelyFramePartBottomIcon />
+					<StyledLovelyFramePartBottomIcon style={{ marginTop: 16 }} />
 				</StyledFormContainer>
 			</SectionContainerContent>
 		</SectionContainer>

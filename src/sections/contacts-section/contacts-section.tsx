@@ -60,6 +60,9 @@ export const ContactsSection = () => {
 							<ContactPlate to={"+79287518157"} size={"large"}>
 								<PhoneInTalkIcon color={"primary"} fontSize={"large"} />
 							</ContactPlate>
+							<ContactPlate to={"https://t.me/Zarina_V_Event"} size={"large"}>
+								<TelegramIcon color={"primary"} fontSize={"large"} />
+							</ContactPlate>
 						</Flex>
 					</Flex>
 

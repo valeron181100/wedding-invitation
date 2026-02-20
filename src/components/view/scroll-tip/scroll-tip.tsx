@@ -21,9 +21,10 @@ const ScrollTip = ({ visible = false }: ScrollTipProps) => {
 						className="scroll-text"
 						style={{
 							color,
+							whiteSpace: "nowrap",
 						}}
 					>
-						Листайте вниз
+						Смахните вверх
 					</p>
 					<div className="scroll-arrow">
 						<svg
@@ -36,6 +37,7 @@ const ScrollTip = ({ visible = false }: ScrollTipProps) => {
 							strokeLinejoin="round"
 							style={{
 								transform: "scale(2.5)",
+								rotate: "180deg",
 								filter: "drop-shadow( 0px 0px 2px rgba(0, 0, 0, .7))",
 							}}
 						>

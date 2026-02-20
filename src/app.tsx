@@ -11,6 +11,7 @@ import { FormSection } from "./sections/form-section/form-section";
 import { ByeSection } from "./sections/bye-section/bye-section";
 import ScrollTip from "./components/view/scroll-tip/scroll-tip";
 import { ContactsSection } from "./sections/contacts-section/contacts-section";
+import { AppSettingsProvider } from "./context/app-settings-context";
 
 const App = () => {
 	const bodyRef = useRef<HTMLDivElement>(null);
@@ -42,16 +43,18 @@ const App = () => {
 	return (
 		<ThemeProvider theme={theme}>
 			<SnackbarProvider maxSnack={1}>
-				<Body ref={bodyRef}>
-					<ScrollTip visible={showScrollTip} />
-					<MainSection />
-					<InviteMessageSection />
-					<WeddingCeremonyInvitationSection />
-					<CelebratingInvitationSection />
-					<FormSection />
-					<ContactsSection />
-					<ByeSection />
-				</Body>
+				<AppSettingsProvider>
+					<Body ref={bodyRef}>
+						<ScrollTip visible={showScrollTip} />
+						<MainSection />
+						<InviteMessageSection />
+						<WeddingCeremonyInvitationSection />
+						<CelebratingInvitationSection />
+						<FormSection />
+						<ContactsSection />
+						<ByeSection />
+					</Body>
+				</AppSettingsProvider>
 			</SnackbarProvider>
 		</ThemeProvider>
 	);

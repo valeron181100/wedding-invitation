@@ -1,4 +1,8 @@
 export interface GuestFormSchema {
-	fullName: string;
+	guests: Guest[];
 	inviteAnswerId: string;
+}
+
+export interface Guest {
+	fullName: string;
 }
