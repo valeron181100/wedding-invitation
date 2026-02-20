@@ -6,7 +6,8 @@ import {
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { useSnackbar } from "notistack";
-import { Flex, SectionContainer, TitleText } from "../../components/view";
+import { AnimatePresence, motion } from "framer-motion";
+import { Flex, SectionContainer, Text, TitleText } from "../../components/view";
 import { SectionContainerContent } from "../../components/view/section-container";
 import {
 	StyledFormContainer,
@@ -21,6 +22,7 @@ import { GuestFields } from "./guest-fields";
 export const FormSection = () => {
 	const { enqueueSnackbar } = useSnackbar();
 	const [formSending, setFormSending] = useState(false);
+	const [formSubmitted, setFormSubmitted] = useState(false);
 	const { people: peopleCount } = useAppSettings();
 
 	const defaultValues: GuestFormSchema = {
@@ -34,13 +36,6 @@ export const FormSection = () => {
 				"Произошла ошибка при отправке анкеты, попробуйте переотправить немного позже, или обращайтесь в контакты в контактной информации.",
 			variant: "error",
 			autoHideDuration: 5000,
-		});
-	};
-
-	const showFormSuccessMessage = () => {
-		enqueueSnackbar({
-			message: "Анкета успешно отправлена.",
-			variant: "success",
 		});
 	};
 
@@ -65,7 +60,7 @@ export const FormSection = () => {
 			if (!response.ok) {
 				showFormSendErrorMessage();
 			} else {
-				showFormSuccessMessage();
+				setFormSubmitted(true);
 			}
 
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -99,71 +94,106 @@ export const FormSection = () => {
 					height={"100%"}
 				>
 					<StyledLovelyFramePartTopIcon style={{ marginBottom: 16 }} />
-					<FormContainer<GuestFormSchema>
-						onSuccess={handleFormSuccess}
-						defaultValues={defaultValues}
-					>
-						<FormErrorProvider
-							onError={(error) => {
-								if (error.type === "required") {
-									return "Это поле обязательно к заполнению";
-								}
-								return error?.message;
-							}}
-						>
-							<Flex
-								direction={"column"}
-								alignItems={"center"}
-								gap={"s10"}
-								pl={"s9"}
-								pr={"s9"}
+
+					<AnimatePresence mode="wait">
+						{formSubmitted ? (
+							<motion.div
+								key="success"
+								initial={{ opacity: 0, scale: 0.92 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ duration: 0.45, ease: "easeOut" }}
+								style={{
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "center",
+									padding: "24px 0",
+								}}
 							>
-								<GuestFields />
-								<RadioButtonGroup
-									label="Просим вас подтвердить своё присутствие"
-									name="inviteAnswerId"
-									required
-									formLabelProps={{
-										style: {
-											fontSize: theme.typography.h6.fontSize,
-											marginBottom: "4px",
-										},
-									}}
-									labelProps={{
-										style: {
-											fontSize: theme.typography.body2.fontSize,
-										},
-									}}
-									options={[
-										{
-											id: "both",
-											label: "Буду и на регистрации и на основном торжестве!",
-										},
-										{
-											id: "reg-only",
-											label: "Буду только на регистрации",
-										},
-										{
-											id: "cel-only",
-											label: "Буду только на основном торжестве",
-										},
-										{
-											id: "no",
-											label: "К сожалению не смогу присутствовать",
-										},
-									]}
-								/>
-								<Button
-									type={"submit"}
-									loading={formSending}
-									variant={"outlined"}
-									size={"large"}
+								<Text
+									design={"on-secondary"}
+									fontSize={"s8"}
+									style={{ textAlign: "center" }}
 								>
-									Отправить
-								</Button>
-							</Flex>
-						</FormErrorProvider>
-					</FormContainer>
+									Анкета отправлена
+								</Text>
+							</motion.div>
+						) : (
+							<motion.div
+								key="form"
+								initial={{ opacity: 1 }}
+								exit={{ opacity: 0, scale: 0.92 }}
+								transition={{ duration: 0.3, ease: "easeIn" }}
+							>
+								<FormContainer<GuestFormSchema>
+									onSuccess={handleFormSuccess}
+									defaultValues={defaultValues}
+								>
+									<FormErrorProvider
+										onError={(error) => {
+											if (error.type === "required") {
+												return "Это поле обязательно к заполнению";
+											}
+											return error?.message;
+										}}
+									>
+										<Flex
+											direction={"column"}
+											alignItems={"center"}
+											gap={"s10"}
+											pl={"s9"}
+											pr={"s9"}
+										>
+											<GuestFields />
+											<RadioButtonGroup
+												label="Просим вас подтвердить своё присутствие"
+												name="inviteAnswerId"
+												required
+												formLabelProps={{
+													style: {
+														fontSize: theme.typography.h6.fontSize,
+														marginBottom: "4px",
+													},
+												}}
+												labelProps={{
+													style: {
+														fontSize: theme.typography.body2.fontSize,
+													},
+												}}
+												options={[
+													{
+														id: "both",
+														label:
+															"Буду и на регистрации и на основном торжестве!",
+													},
+													{
+														id: "reg-only",
+														label: "Буду только на регистрации",
+													},
+													{
+														id: "cel-only",
+														label: "Буду только на основном торжестве",
+													},
+													{
+														id: "no",
+														label: "К сожалению не смогу присутствовать",
+													},
+												]}
+											/>
+											<Button
+												type={"submit"}
+												loading={formSending}
+												variant={"contained"}
+												size={"large"}
+											>
+												Отправить
+											</Button>
+										</Flex>
+									</FormErrorProvider>
+								</FormContainer>
+							</motion.div>
+						)}
+					</AnimatePresence>
+
 					<StyledLovelyFramePartBottomIcon style={{ marginTop: 16 }} />
 				</StyledFormContainer>
 			</SectionContainerContent>
