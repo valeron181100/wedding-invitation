@@ -81,7 +81,6 @@ export const FormSection = () => {
 			siteVersion: version,
 			invitedPeopleAmount: peopleCount,
 			inviteAnswerId: data.inviteAnswerId,
-			createdAt: new Date().toISOString(),
 		};
 
 		try {
