@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 interface AppSettings {
 	people: number | null;
-	ver: string | null;
+	isCelebrationOnly: boolean;
 }
 
 export const AppSettingsContext = createContext<AppSettings | undefined>(
@@ -11,17 +11,21 @@ export const AppSettingsContext = createContext<AppSettings | undefined>(
 );
 
 export const AppSettingsProvider = ({ children }: { children: ReactNode }) => {
-	const settings = useMemo<AppSettings>(() => {
+	const settings = useMemo<AppSettings & { verValid: boolean }>(() => {
 		const params = new URLSearchParams(window.location.search);
 
 		const peopleParam = params.get("people");
 		const verParam = params.get("ver");
 
+		const isCelebrationOnly = verParam === "fir";
+		const verValid = verParam === "fir" || verParam === "oak";
+
 		return {
 			people: peopleParam !== null ? Number(peopleParam) : null,
-			ver: verParam,
+			isCelebrationOnly,
+			verValid,
 		};
-	}, []); // runs once on mount, never changes
+	}, []);
 
 	if (settings.people === null) {
 		// eslint-disable-next-line no-alert
@@ -34,8 +38,17 @@ export const AppSettingsProvider = ({ children }: { children: ReactNode }) => {
 		alert("Параметр 'people' должен быть строго больше 0 и строго меньше 6");
 		return null;
 	}
+
+	if (!settings.verValid) {
+		// eslint-disable-next-line no-alert
+		alert("Параметр 'ver' не найден или указан неверно");
+		return null;
+	}
+
+	const { verValid, ...contextValue } = settings;
+
 	return (
-		<AppSettingsContext.Provider value={settings}>
+		<AppSettingsContext.Provider value={contextValue}>
 			{children}
 		</AppSettingsContext.Provider>
 	);

@@ -4,9 +4,16 @@ import { DateContainer } from "../../components/view/date-container";
 import { StyledLocationIcon, StyledPeoniesSecIcon } from "./styles";
 import { TimeLineSlider } from "./time-line-slider";
 import { SectionContainerContent } from "../../components/view/section-container";
+import { useAppSettings } from "../../context/app-settings-context";
 
 export const WeddingCeremonyInvitationSection = () => {
 	const theme = useTheme();
+	const { isCelebrationOnly } = useAppSettings();
+
+	if (isCelebrationOnly) {
+		return null;
+	}
+
 	return (
 		<SectionContainer>
 			<StyledPeoniesSecIcon />

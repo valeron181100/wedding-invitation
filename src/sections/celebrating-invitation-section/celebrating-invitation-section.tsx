@@ -5,9 +5,11 @@ import { DateContainer } from "../../components/view/date-container";
 import { StyledLocationIcon, StyledPeoniesFirstIcon } from "./styles";
 import { TimeLineSlider } from "./time-line-slider";
 import { SectionContainerContent } from "../../components/view/section-container";
+import { useAppSettings } from "../../context/app-settings-context";
 
 export const CelebratingInvitationSection = () => {
 	const theme = useTheme();
+	const { isCelebrationOnly } = useAppSettings();
 
 	return (
 		<SectionContainer design={"secondary"}>
@@ -19,7 +21,7 @@ export const CelebratingInvitationSection = () => {
 					fontSize={"s18"}
 					style={{ alignSelf: "center" }}
 				>
-					Торжество
+					{isCelebrationOnly ? "Когда и где?" : "Торжество"}
 				</TitleText>
 
 				<Flex

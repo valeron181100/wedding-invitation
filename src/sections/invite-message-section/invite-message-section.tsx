@@ -6,10 +6,12 @@ import { EnvelopeText } from "./envelope-text";
 import { EnvelopeTitle } from "./envelope-title";
 import { TipMessage } from "./tip-message";
 import { SectionContainerContent } from "../../components/view/section-container";
+import { useAppSettings } from "../../context/app-settings-context";
 
 export const InviteMessageSection = () => {
 	const letterContentRef = useRef<HTMLDivElement>(null);
 	const [envelopeOpened, setEnvelopeOpened] = useState(false);
+	const { isCelebrationOnly } = useAppSettings();
 
 	const handleEnvelopeOpened = (opened: boolean) => {
 		setEnvelopeOpened(opened);
@@ -57,11 +59,19 @@ export const InviteMessageSection = () => {
 									особенным. И мы хотим разделить его с теми, кто дорог нашему
 									сердцу.
 								</EnvelopeText>
-								<EnvelopeText>
-									С искренней радостью приглашаем вас присоединиться к нам на
-									церемонии бракосочетания в Санкт-Петербурге и на праздничном
-									торжестве во Владикавказе.
-								</EnvelopeText>
+								{isCelebrationOnly ? (
+									<EnvelopeText>
+										С искренней радостью приглашаем вас присоединиться к нам на
+										церемонии бракосочетания и на праздничном торжестве во
+										Владикавказе.
+									</EnvelopeText>
+								) : (
+									<EnvelopeText>
+										С искренней радостью приглашаем вас присоединиться к нам на
+										церемонии бракосочетания в Санкт-Петербурге и на праздничном
+										торжестве во Владикавказе.
+									</EnvelopeText>
+								)}
 							</Flex>
 						</Envelope>
 					</Flex>

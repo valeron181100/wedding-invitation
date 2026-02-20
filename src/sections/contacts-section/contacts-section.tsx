@@ -5,8 +5,10 @@ import { Flex, SectionContainer, Text, TitleText } from "../../components/view";
 import { SectionContainerContent } from "../../components/view/section-container";
 import { ContactPlate } from "./contact-plate";
 import { VkIcon } from "../../components/view/vk-icon";
+import { useAppSettings } from "../../context/app-settings-context";
 
 export const ContactsSection = () => {
+	const { isCelebrationOnly } = useAppSettings();
 	return (
 		<SectionContainer design={"secondary"}>
 			<SectionContainerContent direction="column" gap={"s6"}>
@@ -32,8 +34,9 @@ export const ContactsSection = () => {
 						fontSize={"s4"}
 						style={{ textAlign: "center" }}
 					>
-						По всем вопросам связанным с торжественным вечером в Альпина Парк г.
-						Владикавказ вы можете обращаться к нашему организатору.
+						{isCelebrationOnly
+							? "По всем вопросам связанным с церемонией бракосочетания и торжественным вечером в Альпина Парк г. Владикавказ вы можете обращаться к нашему организатору."
+							: "По всем вопросам связанным с торжественным вечером в Альпина Парк г. Владикавказ вы можете обращаться к нашему организатору."}
 					</Text>
 
 					<Flex
